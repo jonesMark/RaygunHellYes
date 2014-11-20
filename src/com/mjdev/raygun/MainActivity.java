@@ -9,7 +9,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+//Urness Assignments:
+//Complete Super Basic Prototype, XML lists, and Memory for bucked list/completed apps
 public class MainActivity extends Activity {
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();

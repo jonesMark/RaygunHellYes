@@ -1,14 +1,26 @@
 package com.mjdev.raygun;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-
+	ArrayList<String> titles = new ArrayList<String>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		File list = new File("list.txt");
+		try {
+			Scanner scanner = new Scanner(list);
+			readInfo(scanner);
+		} catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
@@ -30,5 +42,14 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	private void readInfo(Scanner s) {
+		int numOfItems = s.nextInt();
+		while(s.hasNext()){
+			titles.add(s.nextLine());
+			s.nextLine();
+			System.out.println(s.nextLine());
+			s.nextLine();
+		}
 	}
 }

@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 	ArrayList<String> titles = new ArrayList<String>();
+	ArrayList<String> description = new ArrayList<String>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		File list = new File("list.txt");
@@ -44,12 +45,25 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	private void readInfo(Scanner s) {
+		//pull first num, numer of iterations
 		int numOfItems = s.nextInt();
 		while(s.hasNext()){
+			//pull title
 			titles.add(s.nextLine());
 			s.nextLine();
-			System.out.println(s.nextLine());
-			s.nextLine();
+			System.out.println(s.nextLine());//0
+			boolean go = true;
+			while (go) {
+				String check = s.nextLine();
+				if (Integer.parseInt(check)==0) {
+					go = false;
+				}
+				else {
+					description.add(check);
+				}
+			}
+
+
 		}
 	}
 }

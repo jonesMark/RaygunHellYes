@@ -5,13 +5,24 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 //Urness Assignments:
 //Complete Super Basic Prototype, XML lists, and Memory for bucked list/completed apps
 public class MainActivity extends Activity {
+	
+	ActionBar.Tab tab1, tab2, tab3;
+	Fragment fragmentTab1 = new FragmentTab1();
+	Fragment fragmentTab2 = new FragmentTab2();
+	Fragment fragmentTab3 = new FragmentTab3();    
+	
+	
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();
 	@Override
@@ -25,6 +36,21 @@ public class MainActivity extends Activity {
 		}
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        
+        tab1 = actionBar.newTab().setText(R.string.TabOne);
+        tab2 = actionBar.newTab().setText(R.string.TabTwo);
+        tab3 = actionBar.newTab().setText(R.string.TabThree);
+        
+        tab1.setTabListener(new MyTabListener(fragmentTab1));
+        tab2.setTabListener(new MyTabListener(fragmentTab2));
+        tab3.setTabListener(new MyTabListener(fragmentTab3));
+        
+        actionBar.addTab(tab1);
+        actionBar.addTab(tab2);
+        actionBar.addTab(tab3);
 	}
 
 	@Override

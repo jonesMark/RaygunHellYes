@@ -4,5 +4,8 @@
     <string name="app_name">RayGun</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="TabOne">This Week</string>
+    <string name="TabTwo">To Do</string>
+    <string name="TabThree">My Badges</string>
 
 </resources>

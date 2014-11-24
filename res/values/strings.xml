@@ -7,5 +7,15 @@
     <string name="TabOne">This Week</string>
     <string name="TabTwo">To Do</string>
     <string name="TabThree">My Badges</string>
+    
+    <string-array name="bucket_list">
+        <item>Watch the fireworks at an iCubs game</item>
+        <item>Zoo Brew</item>
+        <item>Tour the Terrace Hill governor’s mansion</item>
+        <item>Take a class at the DSM Art Center</item>
+        <item>Happy hour at The Continental</item>
+        <item>Order a crab rangoon pizza and chinese cheese sticks at Fong’s</item>
+        
+    </string-array>
 
 </resources>

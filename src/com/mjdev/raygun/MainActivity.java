@@ -6,22 +6,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
 //Urness Assignments:
 //Complete Super Basic Prototype, XML lists, and Memory for bucked list/completed apps
-public class MainActivity extends Activity {
-	
+public class MainActivity extends Activity{
+	//initialize tabs
 	ActionBar.Tab tab1, tab2, tab3;
 	Fragment fragmentTab1 = new FragmentTab1();
 	Fragment fragmentTab2 = new FragmentTab2();
 	Fragment fragmentTab3 = new FragmentTab3();    
 	
+	ListView listView;
 	
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
 		}
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		//tabs
 		ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         
@@ -51,6 +54,11 @@ public class MainActivity extends Activity {
         actionBar.addTab(tab1);
         actionBar.addTab(tab2);
         actionBar.addTab(tab3);
+        
+        //list 
+        listView = (ListView) findViewById(R.id.bucketlist);
+       // listView.setOnItemClickListener(this); 
+           
 	}
 
 	@Override
@@ -93,4 +101,6 @@ public class MainActivity extends Activity {
 
 		}
 	}
+
+
 }

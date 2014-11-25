@@ -38,7 +38,7 @@ public class MainActivity extends Activity{
 
 	//Now, we can populate the lists for the main screen and the xml files.  
 	protected void onCreate(Bundle savedInstanceState) {
-		//example array reading.  
+		//example array reading//MOVE WHERE NEEDED
 		//String [] titles = new String [20];
 		boolean [] completed = new boolean [(titles.size())];
 		//initial checks

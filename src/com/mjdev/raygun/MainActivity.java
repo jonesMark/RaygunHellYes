@@ -10,7 +10,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,8 +31,40 @@ public class MainActivity extends Activity{
 	
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();
-	@Override
+	
+	//put on all fragements
+	SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
+	SharedPreferences.Editor editor = settings.edit();
+
+		//Now, we can populate the lists for the main screen and the xml files.  
 	protected void onCreate(Bundle savedInstanceState) {
+		//example array reading.  
+		String [] titlearray = new String [20];
+		boolean [] completed = new boolean [(titlearray.length)];
+		//initial checks
+		for (int a = 0; a < titlearray.length; a++) {
+			if (settings.getInt(titlearray[a], 0)==1) {
+				completed[a]=true;
+			}
+			else {
+				completed[a]=false;
+			}
+			if (settings.getInt(titlearray[a].concat(" bucket"), 0)==1) {
+				completed[a]=true;
+			}
+			else {
+				completed[a]=false;
+			}	
+		}
+		
+		int a = 1;
+		//if something is checked/unchecked 1 is check, 0 is not
+		editor.putInt(titlearray[a], 1);
+		editor.commit();
+		//bucket list check
+		editor.putInt(titlearray[a].concat(" bucket"), 1);
+		editor.commit();
+		
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);

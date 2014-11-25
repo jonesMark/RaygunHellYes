@@ -26,49 +26,49 @@ public class MainActivity extends Activity{
 	Fragment fragmentTab1 = new FragmentTab1();
 	Fragment fragmentTab2 = new FragmentTab2();
 	Fragment fragmentTab3 = new FragmentTab3();    
-	
+
 	ListView listView;
-	
+
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();
-	
+
 	//put on all fragements
 	SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
 	SharedPreferences.Editor editor = settings.edit();
 
-		//Now, we can populate the lists for the main screen and the xml files.  
+	//Now, we can populate the lists for the main screen and the xml files.  
 	protected void onCreate(Bundle savedInstanceState) {
 		//example array reading.  
-		String [] titlearray = new String [20];
-		boolean [] completed = new boolean [(titlearray.length)];
+		//String [] titles = new String [20];
+		boolean [] completed = new boolean [(titles.size())];
 		//initial checks
-		for (int a = 0; a < titlearray.length; a++) {
-			if (settings.getInt(titlearray[a], 0)==1) {
+		for (int a = 0; a < titles.size(); a++) {
+			if (settings.getInt(titles.get(a), 0)==1) {
 				completed[a]=true;
 			}
 			else {
 				completed[a]=false;
 			}
-			if (settings.getInt(titlearray[a].concat(" bucket"), 0)==1) {
+			if (settings.getInt((titles.get(a)).concat(" bucket"), 0)==1) {
 				completed[a]=true;
 			}
 			else {
 				completed[a]=false;
 			}	
 		}
-		
+
 		int a = 1;
 		//if something is checked/unchecked 1 is check, 0 is not
-		editor.putInt(titlearray[a], 1);
+		editor.putInt(titles.get(a), 1);
 		editor.commit();
 		//bucket list check
-		editor.putInt(titlearray[a].concat(" bucket"), 1);
+		editor.putInt(titles.get(a).concat(" bucket"), 1);
 		editor.commit();
-		
-		
+
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		try {
 			parseXmlFile();
 		} catch (XmlPullParserException e) {
@@ -78,24 +78,24 @@ public class MainActivity extends Activity{
 		}
 		//tabs
 		ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
-        tab1 = actionBar.newTab().setText(R.string.TabOne);
-        tab2 = actionBar.newTab().setText(R.string.TabTwo);
-        tab3 = actionBar.newTab().setText(R.string.TabThree);
-        
-        tab1.setTabListener(new MyTabListener(fragmentTab1));
-        tab2.setTabListener(new MyTabListener(fragmentTab2));
-        tab3.setTabListener(new MyTabListener(fragmentTab3));
-        
-        actionBar.addTab(tab1);
-        actionBar.addTab(tab2);
-        actionBar.addTab(tab3);
-        
-        //list 
-        listView = (ListView) findViewById(R.id.bucketlist);
-       // listView.setOnItemClickListener(this); 
-           
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		tab1 = actionBar.newTab().setText(R.string.TabOne);
+		tab2 = actionBar.newTab().setText(R.string.TabTwo);
+		tab3 = actionBar.newTab().setText(R.string.TabThree);
+
+		tab1.setTabListener(new MyTabListener(fragmentTab1));
+		tab2.setTabListener(new MyTabListener(fragmentTab2));
+		tab3.setTabListener(new MyTabListener(fragmentTab3));
+
+		actionBar.addTab(tab1);
+		actionBar.addTab(tab2);
+		actionBar.addTab(tab3);
+
+		//list 
+		listView = (ListView) findViewById(R.id.bucketlist);
+		// listView.setOnItemClickListener(this); 
+
 	}
 
 	@Override
@@ -116,27 +116,27 @@ public class MainActivity extends Activity{
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	private void parseXmlFile() throws XmlPullParserException, IOException{
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-        factory.setNamespaceAware(true);
-        XmlPullParser xpp = factory.newPullParser();
-        xpp.setInput(getAssets().open("list.xml"),null);
-        int eventType = xpp.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-            if(eventType == XmlPullParser.START_DOCUMENT) {
-                Log.v("Time Elements", "Start document");
-            } else if(eventType == XmlPullParser.END_DOCUMENT) {
-            	Log.v("Time Elements", "End document");
-            } else if(eventType == XmlPullParser.START_TAG) {
-            	Log.v("Time Elements","Start tag "+xpp.getName());
-            } else if(eventType == XmlPullParser.END_TAG) {
-            	Log.v("Time Elements","End tag "+xpp.getName());
-            } else if(eventType == XmlPullParser.TEXT) {
-            	Log.v("Time Elements","Text "+xpp.getText());
-            }
-            eventType = xpp.next();
-           }
+		factory.setNamespaceAware(true);
+		XmlPullParser xpp = factory.newPullParser();
+		xpp.setInput(getAssets().open("list.xml"),null);
+		int eventType = xpp.getEventType();
+		while (eventType != XmlPullParser.END_DOCUMENT) {
+			if(eventType == XmlPullParser.START_DOCUMENT) {
+				Log.v("Time Elements", "Start document");
+			} else if(eventType == XmlPullParser.END_DOCUMENT) {
+				Log.v("Time Elements", "End document");
+			} else if(eventType == XmlPullParser.START_TAG) {
+				Log.v("Time Elements","Start tag "+xpp.getName());
+			} else if(eventType == XmlPullParser.END_TAG) {
+				Log.v("Time Elements","End tag "+xpp.getName());
+			} else if(eventType == XmlPullParser.TEXT) {
+				Log.v("Time Elements","Text "+xpp.getText());
+			}
+			eventType = xpp.next();
+		}
 	}
 
 

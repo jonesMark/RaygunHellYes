@@ -16,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 //Urness Assignments:
@@ -93,9 +94,15 @@ public class MainActivity extends Activity{
 		actionBar.addTab(tab3);
 
 		//list 
-		listView = (ListView) findViewById(R.id.bucketlist);
+//		listView = (ListView) findViewById(R.id.bucketlist);
 		// listView.setOnItemClickListener(this); 
-
+		
+		//TODO: Test This new code below
+		// This is the array adapter, it takes the context of the activity as a 
+        // first parameter, the type of list view as a second parameter and your 
+        // array as a third parameter.
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
+        listView.setAdapter(arrayAdapter); 
 	}
 
 	@Override

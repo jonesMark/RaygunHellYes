@@ -34,8 +34,8 @@ public class MainActivity extends Activity{
 	ArrayList<String> description = new ArrayList<String>();
 
 	//put on all fragements
-	SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
-	SharedPreferences.Editor editor = settings.edit();
+	//SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
+	//SharedPreferences.Editor editor = settings.edit();
 
 	//Now, we can populate the lists for the main screen and the xml files.  
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class MainActivity extends Activity{
 		//String [] titles = new String [20];
 		boolean [] completed = new boolean [(titles.size())];
 		//initial checks
+		/*
 		for (int a = 0; a < titles.size(); a++) {
 			if (settings.getInt(titles.get(a), 0)==1) {
 				completed[a]=true;
@@ -56,15 +57,15 @@ public class MainActivity extends Activity{
 			else {
 				completed[a]=false;
 			}	
-		}
+		}*/
 
-		int a = 1;
+		//int a = 1;
 		//if something is checked/unchecked 1 is check, 0 is not
-		editor.putInt(titles.get(a), 1);
-		editor.commit();
+		//editor.putInt(titles.get(a), 1);
+		//editor.commit();
 		//bucket list check
-		editor.putInt(titles.get(a).concat(" bucket"), 1);
-		editor.commit();
+		//editor.putInt(titles.get(a).concat(" bucket"), 1);
+		//editor.commit();
 
 
 		super.onCreate(savedInstanceState);
@@ -101,8 +102,8 @@ public class MainActivity extends Activity{
 		// This is the array adapter, it takes the context of the activity as a 
         // first parameter, the type of list view as a second parameter and your 
         // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
-        listView.setAdapter(arrayAdapter); 
+        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
+       // listView.setAdapter(arrayAdapter); 
 	}
 
 	@Override

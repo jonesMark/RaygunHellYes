@@ -10,13 +10,14 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 //Urness Assignments:
@@ -32,8 +33,10 @@ public class MainActivity extends Activity{
 
 	ArrayList<String> titles = new ArrayList<String>();
 	ArrayList<String> description = new ArrayList<String>();
+	
+	public final static String EXTRA_MESSAGE = "com.mjdev.raygun.MESSAGE";
 
-	//put on all fragements
+	//put on all fragments
 	//SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
 	//SharedPreferences.Editor editor = settings.edit();
 
@@ -41,7 +44,7 @@ public class MainActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		//example array reading//MOVE WHERE NEEDED
 		//String [] titles = new String [20];
-		boolean [] completed = new boolean [(titles.size())];
+		//boolean [] completed = new boolean [(titles.size())];
 		//initial checks
 		/*
 		for (int a = 0; a < titles.size(); a++) {
@@ -95,15 +98,22 @@ public class MainActivity extends Activity{
 		actionBar.addTab(tab3);
 
 		//list 
-//		listView = (ListView) findViewById(R.id.bucketlist);
+		listView = (ListView) findViewById(R.id.bucketlist);
 		// listView.setOnItemClickListener(this); 
-		
-		//TODO: Test This new code below
-		// This is the array adapter, it takes the context of the activity as a 
-        // first parameter, the type of list view as a second parameter and your 
-        // array as a third parameter.
-        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, titles);
-       // listView.setAdapter(arrayAdapter); 
+		listView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                    long id) {
+            	String entry = (String) parent.getItemAtPosition(position);
+            	
+                Intent intent = new Intent(MainActivity.this, TaskDescription.class);
+                //String message = "abc";
+                intent.putExtra(EXTRA_MESSAGE, entry);
+            	intent.putStringArrayListExtra("titles", titles);
+            	intent.putStringArrayListExtra("descriptions", description);
+                startActivity(intent);
+            }
+        });
 	}
 
 	@Override
@@ -131,17 +141,26 @@ public class MainActivity extends Activity{
 		XmlPullParser xpp = factory.newPullParser();
 		xpp.setInput(getAssets().open("list.xml"),null);
 		int eventType = xpp.getEventType();
+		String lastTag = "";
 		while (eventType != XmlPullParser.END_DOCUMENT) {
 			if(eventType == XmlPullParser.START_DOCUMENT) {
 				Log.v("Time Elements", "Start document");
 			} else if(eventType == XmlPullParser.END_DOCUMENT) {
 				Log.v("Time Elements", "End document");
 			} else if(eventType == XmlPullParser.START_TAG) {
-				Log.v("Time Elements","Start tag "+xpp.getName());
+//				Log.v("Time Elements","Start tag "+xpp.getName());
+				lastTag = xpp.getName();
 			} else if(eventType == XmlPullParser.END_TAG) {
-				Log.v("Time Elements","End tag "+xpp.getName());
+//				Log.v("Time Elements","End tag "+xpp.getName());
+				lastTag = "";
 			} else if(eventType == XmlPullParser.TEXT) {
-				Log.v("Time Elements","Text "+xpp.getText());
+//				Log.v("Time Elements","Text "+xpp.getText());
+				if (lastTag.equals("title")){
+					titles.add(xpp.getText());
+				}
+				else if (lastTag.equals("description")){
+					description.add(xpp.getText());
+				}
 			}
 			eventType = xpp.next();
 		}

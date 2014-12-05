@@ -7,7 +7,7 @@
     <string name="TabOne">This Week</string>
     <string name="TabTwo">To Do</string>
     <string name="TabThree">My Badges</string>
-    
+
     <string-array name="bucket_list">
         <item>Watch the fireworks at an iCubs game</item>
         <item>Zoo Brew</item>
@@ -15,7 +15,22 @@
         <item>Take a class at the DSM Art Center</item>
         <item>Happy hour at The Continental</item>
         <item>Order a crab rangoon pizza and chinese cheese sticks at Fong’s</item>
-        
     </string-array>
+    <string-array name="completed_tasks">
+        <item>Order sake bombs at Miyabi 9</item>
+        <item>Talk to a docent at the Salisbury House</item>
+        <item>Follow the rules of Das Boot at Hessen Haus</item>
+        <item>Cheers beers at El Bait Shop</item>
+        <item>Half-price pizza and Peroni beer night a Centro</item>
+    </string-array>
+    <string-array name="todo_tasks">
+        <item>Try a Lebanese specialty drink at Open Sesame</item>
+        <item>Order a burger and spiked shake at Zombie Burger + Drink Lab</item>
+        <item>Try a French pastry at La Mie</item>
+        <item>Walk along the Principal River</item>
+        <item>Bring a bike and beer to the high trestle trail</item>
+    </string-array>
+
+    <string name="title_activity_task_description">TaskDescription</string>
 
 </resources>

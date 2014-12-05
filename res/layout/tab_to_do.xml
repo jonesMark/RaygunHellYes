@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <EditText
+    <!-- <EditText
         android:id="@+id/editText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +15,14 @@
         android:inputType="textPersonName" >
 
         <requestFocus />
-    </EditText>
+    </EditText> -->
+<ListView
+     android:id="@+id/todo_list"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentTop="true"
+     android:entries="@array/todo_tasks" >
 
+</ListView>
 </RelativeLayout>

@@ -17,7 +17,6 @@ public class FragmentTab1 extends Fragment {
 	                           Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.tab1, container, false);
 		view.setClickable(true);
-		//view.setOnClickListener(myClickListener);
 		ListView listView = (ListView) view.findViewById(R.id.bucketlist);
 		listView.setOnItemClickListener(myClickListener);
 		//TextView textview = (TextView) view.findViewById(R.id.tabtextview);

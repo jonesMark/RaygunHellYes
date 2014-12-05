@@ -2,11 +2,11 @@ package com.mjdev.raygun;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -27,9 +27,15 @@ public class FragmentTab1 extends Fragment {
 	  public OnItemClickListener myClickListener = new OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			// TODO Auto-generated method stub
-			Log.v("Time Elements", "We Clicked");
-			  System.out.println("Clicked");
+			MainActivity act = (MainActivity) getActivity();
+			String entry = (String) parent.getItemAtPosition(position);
+//        	String entry = ((TextView)view).getText().toString();
+            Intent intent = new Intent(view.getContext(), TaskDescription.class);
+            intent.putExtra("task", entry);
+        	intent.putStringArrayListExtra("titles", act.titles);
+        	Log.v("Time Elements", act.description.get(0).toString());
+        	intent.putStringArrayListExtra("descriptions", act.description);
+            startActivity(intent);
 		}
 	  };
 	}

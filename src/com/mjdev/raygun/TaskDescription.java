@@ -22,8 +22,8 @@ public class TaskDescription extends Activity {
 		setContentView(R.layout.activity_task_description);
 		Intent i = getIntent();
 		titles = i.getStringArrayListExtra("titles");
-		description = i.getStringArrayListExtra("description");
-		String task = i.getStringExtra(EXTRA_MESSAGE);
+		description = i.getStringArrayListExtra("descriptions");
+		String task = i.getStringExtra("task");
 		for(String t : titles){
 			if(t.equals(task)){
 				ndx = titles.indexOf(t);

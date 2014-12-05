@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,8 +33,8 @@ public class MainActivity extends Activity{
 
 	ListView listView;
 
-	ArrayList<String> titles = new ArrayList<String>();
-	ArrayList<String> description = new ArrayList<String>();
+	public ArrayList<String> titles = new ArrayList<String>();
+	public ArrayList<String> description = new ArrayList<String>();
 	
 	public final static String EXTRA_MESSAGE = "com.mjdev.raygun.MESSAGE";
 
@@ -42,7 +43,7 @@ public class MainActivity extends Activity{
 	//SharedPreferences.Editor editor = settings.edit();
 
 	//Now, we can populate the lists for the main screen and the xml files.  
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		//example array reading//MOVE WHERE NEEDED
 		//String [] titles = new String [20];
 		//boolean [] completed = new boolean [(titles.size())];
@@ -165,6 +166,8 @@ public class MainActivity extends Activity{
 			eventType = xpp.next();
 		}
 	}
-
+	public ArrayList<String> getTitles() {
+		return titles;
+	}
 
 }

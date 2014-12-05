@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 //Urness Assignments:
 //Complete Super Basic Prototype, XML lists, and Memory for bucked list/completed apps
@@ -99,21 +100,20 @@ public class MainActivity extends Activity{
 
 		//list 
 		listView = (ListView) findViewById(R.id.bucketlist);
-		// listView.setOnItemClickListener(this); 
-		listView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                    long id) {
-            	String entry = (String) parent.getItemAtPosition(position);
-            	
-                Intent intent = new Intent(MainActivity.this, TaskDescription.class);
-                //String message = "abc";
-                intent.putExtra(EXTRA_MESSAGE, entry);
-            	intent.putStringArrayListExtra("titles", titles);
-            	intent.putStringArrayListExtra("descriptions", description);
-                startActivity(intent);
-            }
-        });
+	    //listView.setOnItemClickListener(this); 
+//		listView.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position,
+//                    long id) {
+//            	//String entry = (String) parent.getItemAtPosition(position);
+//            	String entry = ((TextView)view).getText().toString();
+//                Intent intent = new Intent(getApplicationContext(), TaskDescription.class);
+//                intent.putExtra(EXTRA_MESSAGE, entry);
+//            	intent.putStringArrayListExtra("titles", titles);
+//            	intent.putStringArrayListExtra("descriptions", description);
+//                startActivity(intent);
+//            }
+//        });
 	}
 
 	@Override

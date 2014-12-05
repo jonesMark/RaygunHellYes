@@ -10,6 +10,7 @@ public class FragmentTab3 extends Fragment {
 	  public View onCreateView(LayoutInflater inflater, ViewGroup container, 
 	                           Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.tab_my_badges, container, false);
+		view.setClickable(true);
 		//TextView textview = (TextView) view.findViewById(R.id.tabtextview);
 		//textview.setText(R.string.TabThree);
 		return view;

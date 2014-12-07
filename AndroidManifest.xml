@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mjdev.raygun.MainActivity" />
         </activity>
+        <activity
+            android:name=".Badges"
+            android:label="@string/title_activity_badges"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mjdev.raygun.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

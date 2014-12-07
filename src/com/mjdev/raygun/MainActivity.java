@@ -130,12 +130,16 @@ public class MainActivity extends Activity{
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.badges) {
+			goToBadges(item.getActionView());
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
+	public void goToBadges(View view){
+		Intent intent = new Intent(this, Badges.class);
+		startActivity(intent);
+	}
 	private void parseXmlFile() throws XmlPullParserException, IOException{
 		XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 		factory.setNamespaceAware(true);

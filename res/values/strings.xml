@@ -32,5 +32,6 @@
     </string-array>
 
     <string name="title_activity_task_description">TaskDescription</string>
+    <string name="title_activity_badges">Badges</string>
 
 </resources>

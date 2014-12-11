@@ -12,15 +12,11 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
 
 //Urness Assignments:
 //Complete Super Basic Prototype, XML lists, and Memory for bucked list/completed apps
@@ -37,42 +33,9 @@ public class MainActivity extends Activity{
 	public ArrayList<String> description = new ArrayList<String>();
 	
 	public final static String EXTRA_MESSAGE = "com.mjdev.raygun.MESSAGE";
-
-	//put on all fragments
-	//SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());//uses the default app preferences
-	//SharedPreferences.Editor editor = settings.edit();
-
+	
 	//Now, we can populate the lists for the main screen and the xml files.  
 	public void onCreate(Bundle savedInstanceState) {
-		//example array reading//MOVE WHERE NEEDED
-		//String [] titles = new String [20];
-		//boolean [] completed = new boolean [(titles.size())];
-		//initial checks
-		/*
-		for (int a = 0; a < titles.size(); a++) {
-			if (settings.getInt(titles.get(a), 0)==1) {
-				completed[a]=true;
-			}
-			else {
-				completed[a]=false;
-			}
-			if (settings.getInt((titles.get(a)).concat(" bucket"), 0)==1) {
-				completed[a]=true;
-			}
-			else {
-				completed[a]=false;
-			}	
-		}*/
-
-		//int a = 1;
-		//if something is checked/unchecked 1 is check, 0 is not
-		//editor.putInt(titles.get(a), 1);
-		//editor.commit();
-		//bucket list check
-		//editor.putInt(titles.get(a).concat(" bucket"), 1);
-		//editor.commit();
-
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
@@ -101,20 +64,6 @@ public class MainActivity extends Activity{
 
 		//list 
 		listView = (ListView) findViewById(R.id.bucketlist);
-	    //listView.setOnItemClickListener(this); 
-//		listView.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position,
-//                    long id) {
-//            	//String entry = (String) parent.getItemAtPosition(position);
-//            	String entry = ((TextView)view).getText().toString();
-//                Intent intent = new Intent(getApplicationContext(), TaskDescription.class);
-//                intent.putExtra(EXTRA_MESSAGE, entry);
-//            	intent.putStringArrayListExtra("titles", titles);
-//            	intent.putStringArrayListExtra("descriptions", description);
-//                startActivity(intent);
-//            }
-//        });
 	}
 
 	@Override
@@ -149,17 +98,12 @@ public class MainActivity extends Activity{
 		String lastTag = "";
 		while (eventType != XmlPullParser.END_DOCUMENT) {
 			if(eventType == XmlPullParser.START_DOCUMENT) {
-				Log.v("Time Elements", "Start document");
 			} else if(eventType == XmlPullParser.END_DOCUMENT) {
-				Log.v("Time Elements", "End document");
 			} else if(eventType == XmlPullParser.START_TAG) {
-//				Log.v("Time Elements","Start tag "+xpp.getName());
 				lastTag = xpp.getName();
 			} else if(eventType == XmlPullParser.END_TAG) {
-//				Log.v("Time Elements","End tag "+xpp.getName());
 				lastTag = "";
 			} else if(eventType == XmlPullParser.TEXT) {
-//				Log.v("Time Elements","Text "+xpp.getText());
 				if (lastTag.equals("title")){
 					titles.add(xpp.getText());
 				}

@@ -18,8 +18,6 @@ public class FragmentTab2 extends Fragment {
 		view.setClickable(true);
 		ListView listView = (ListView) view.findViewById(R.id.todo_list);
 		listView.setOnItemClickListener(myClickListener);
-		//TextView textview = (TextView) view.findViewById(R.id.tabtextview);
-		//textview.setText(R.string.TabOne);
 		return view;
 	  }
 	  public OnItemClickListener myClickListener = new OnItemClickListener() {
@@ -27,7 +25,6 @@ public class FragmentTab2 extends Fragment {
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			MainActivity act = (MainActivity) getActivity();
 			String entry = (String) parent.getItemAtPosition(position);
-//        	String entry = ((TextView)view).getText().toString();
             Intent intent = new Intent(view.getContext(), TaskDescription.class);
             intent.putExtra("task", entry);
         	intent.putStringArrayListExtra("titles", act.titles);

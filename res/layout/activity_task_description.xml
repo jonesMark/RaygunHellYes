@@ -27,21 +27,28 @@
     
     
     <CheckBox
+        
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="41dp"
+        android:scaleX="1.5"
+    	android:scaleY="1.5"
         
         />
+    
 
     <TextView
         android:id="@+id/desc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
         android:text="Example Text"
+        android:layout_marginLeft="20dp"
+        android:layout_toLeftOf="@+id/checkBox1"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
             />
 
   

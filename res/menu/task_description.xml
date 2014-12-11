@@ -8,7 +8,7 @@
         android:showAsAction="never"
         android:title="@string/action_settings"/> -->
         <item android:id="@+id/badges"
-          android:icon="@drawable/ic_launcher"
+          android:icon="@drawable/badgeicon"
           android:title="My Badges"
           android:showAsAction="ifRoom" />
 

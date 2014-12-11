@@ -10,9 +10,10 @@
         android:layout_weight="0.5"
         >
         <ImageView
+            
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/abc"
+            android:background="@drawable/abc"
             android:adjustViewBounds="true"
             />
     </RelativeLayout>

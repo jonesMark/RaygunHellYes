@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="TabOne">This Week</string>
     <string name="TabTwo">To Do</string>
-    <string name="TabThree">My Badges</string>
+    <string name="TabThree">Completed</string>
 
     <string-array name="bucket_list">
         <item>Watch the fireworks at an iCubs game</item>

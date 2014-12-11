@@ -31,7 +31,7 @@
         <item>Bring a bike and beer to the high trestle trail</item>
     </string-array>
 
-    <string name="title_activity_task_description">TaskDescription</string>
-    <string name="title_activity_badges">Badges</string>
+    <string name="title_activity_task_description">Description</string>
+    <string name="title_activity_badges">My Badges</string>
 
 </resources>
